@@ -1,0 +1,21 @@
+# Local development PostgreSQL only. Nothing else is required for M1.
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: pie-postgres
+    environment:
+      POSTGRES_USER: pie
+      POSTGRES_PASSWORD: pie_local_dev
+      POSTGRES_DB: pie
+    ports:
+      - "5433:5432"
+    volumes:
+      - pie-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pie -d pie"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  pie-pgdata:

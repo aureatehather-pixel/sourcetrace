@@ -1,0 +1,42 @@
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+
+# Tooling caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Private evaluation material. Real sources are personal data: conversation
+# transcripts, named third parties and their reported claims. Anything derived
+# from them - acceptance reports carrying every extracted item and its verbatim
+# quote, or frozen cases quoting a source - is private for the same reason.
+# None of it belongs in git. Tests never depend on it; the long-document tests
+# use a synthetic stand-in (tests/synthetic_sources.py).
+/evaluation/real_sources/
+
+# Acceptance reports produced by `evaluation/run_acceptance.py`. Ignored is not
+# the same as disposable: an acceptance run costs real money and is not
+# reproducible for free, so its report belongs on disk, in the repository tree,
+# out of git.
+/evaluation/acceptance/
+
+/evaluation/cases/

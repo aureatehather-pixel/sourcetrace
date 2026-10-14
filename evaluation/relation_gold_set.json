@@ -1,0 +1,1042 @@
+{
+  "schema_version": 1,
+  "purpose": "Hand-labelled pairs for falsifying the M4 relation classifier. Engineering evidence, not a research benchmark. Every real-world M4 failure should be added here as a regression case, and difficult examples are never removed because the current implementation fails them.",
+  "labelling_notes": {
+    "expected": "The single best label. Used to report agreement.",
+    "acceptable": "Labels a careful human would not call wrong. Some pairs are genuinely borderline and pretending otherwise would be fake precision. A result inside this set counts as correct.",
+    "forbidden": "Labels that are actually wrong for this pair. This is what the traps really test - a false-contradiction trap is failed by answering 'contradicts', not by disagreeing with 'expected'.",
+    "direction": "Checked only when the expected label is 'qualifies'."
+  },
+  "pairs": [
+    {
+      "id": "gold_001",
+      "category": "clear_qualification",
+      "note": "The flagship case. Advice, then the same person reporting what the advice actually cost. The relation is the whole reason M4 exists, and content-word overlap between the two is zero.",
+      "expected": "qualifies",
+      "expected_direction": "b_qualifies_a",
+      "acceptable": [
+        "qualifies"
+      ],
+      "forbidden": [
+        "contradicts",
+        "no_meaningful_relation"
+      ],
+      "a": {
+        "statement": "The fastest way to get good is to reverse-engineer a serious project instead of starting one from scratch.",
+        "stance": "recommended",
+        "claimed_by": "Zilan",
+        "quote": "the fastest way to get good is to reverse-engineer a serious project instead of starting one from scratch",
+        "context": "Kestrel Python meetup, in person, 2026-02-11"
+      },
+      "b": {
+        "statement": "The first six weeks were mostly reading, not writing.",
+        "stance": "asserted",
+        "claimed_by": "Zilan",
+        "quote": "the first six weeks were mostly reading, not writing",
+        "context": "Coffee, Brookside, 2026-03-20"
+      }
+    },
+    {
+      "id": "gold_002",
+      "category": "clear_qualification",
+      "note": "A broad recommendation and the population it does not work for.",
+      "expected": "qualifies",
+      "expected_direction": "b_qualifies_a",
+      "acceptable": [
+        "qualifies"
+      ],
+      "forbidden": [
+        "contradicts"
+      ],
+      "a": {
+        "statement": "Everyone should learn to read the source of the libraries they depend on.",
+        "stance": "recommended",
+        "claimed_by": "Farah",
+        "quote": "everyone should learn to read the source of the libraries they depend on",
+        "context": "Slack thread, 2026-01-09"
+      },
+      "b": {
+        "statement": "The juniors who tried it gave up within a week because the codebases assume too much context.",
+        "stance": "asserted",
+        "claimed_by": "Farah",
+        "quote": "the juniors who tried it gave up within a week because the codebases assume too much context",
+        "context": "Slack thread, 2026-01-30"
+      }
+    },
+    {
+      "id": "gold_003",
+      "category": "clear_qualification",
+      "note": "A scope condition attached to a general claim.",
+      "expected": "qualifies",
+      "expected_direction": "a_qualifies_b",
+      "acceptable": [
+        "qualifies"
+      ],
+      "forbidden": [
+        "contradicts",
+        "no_meaningful_relation"
+      ],
+      "a": {
+        "statement": "The speedup only shows up on datasets that do not fit in memory.",
+        "stance": "asserted",
+        "claimed_by": "Nadia",
+        "quote": "the speedup only shows up on datasets that do not fit in memory",
+        "context": "Benchmark write-up, 2026-04-02"
+      },
+      "b": {
+        "statement": "The new indexing approach is roughly four times faster.",
+        "stance": "asserted",
+        "claimed_by": "Nadia",
+        "quote": "the new indexing approach is roughly four times faster",
+        "context": "Benchmark write-up, 2026-04-02"
+      }
+    },
+    {
+      "id": "gold_004",
+      "category": "clear_qualification",
+      "note": "A retraction of degree, not of substance. The classic thing a naive classifier calls a contradiction.",
+      "expected": "qualifies",
+      "expected_direction": "b_qualifies_a",
+      "acceptable": [
+        "qualifies"
+      ],
+      "forbidden": [
+        "contradicts"
+      ],
+      "a": {
+        "statement": "Switching to the new framework cut the release time in half.",
+        "stance": "asserted",
+        "claimed_by": "Marcus",
+        "quote": "switching to the new framework cut the release time in half",
+        "context": "Retro notes, 2025-11-14"
+      },
+      "b": {
+        "statement": "Most of that saving came from the rewrite of the test suite that happened at the same time.",
+        "stance": "asserted",
+        "claimed_by": "Marcus",
+        "quote": "most of that saving came from the rewrite of the test suite that happened at the same time",
+        "context": "Retro notes, 2026-02-06"
+      }
+    },
+    {
+      "id": "gold_005",
+      "category": "clear_reinforcement",
+      "note": "Advice, plus the concrete hiring behaviour that backs it. Same person, different statements, one supplying support for the other.",
+      "expected": "reinforces",
+      "acceptable": [
+        "reinforces"
+      ],
+      "forbidden": [
+        "contradicts",
+        "no_meaningful_relation"
+      ],
+      "a": {
+        "statement": "Serious projects matter more than LeetCode for getting hired.",
+        "stance": "recommended",
+        "claimed_by": "An engineer at DevGuild",
+        "quote": "serious projects mattered more than LeetCode",
+        "context": "DevGuild meetup, 2026-01-22"
+      },
+      "b": {
+        "statement": "The people he actually hires are the ones who can walk him through a system they built.",
+        "stance": "asserted",
+        "claimed_by": "An engineer at DevGuild",
+        "quote": "the people he actually hires are the ones who can walk him through a system they built",
+        "context": "DevGuild meetup, 2026-01-22"
+      }
+    },
+    {
+      "id": "gold_006",
+      "category": "clear_reinforcement",
+      "note": "A stated practice and a stated outcome of that practice, both from the same source, neither restating the other.",
+      "expected": "reinforces",
+      "acceptable": [
+        "reinforces"
+      ],
+      "forbidden": [
+        "contradicts"
+      ],
+      "a": {
+        "statement": "Their team writes the failing test before touching the bug.",
+        "stance": "asserted",
+        "claimed_by": "Priya",
+        "quote": "their team writes the failing test before touching the bug",
+        "context": "Engineering blog, 2026-03-01"
+      },
+      "b": {
+        "statement": "They have not had a regression reopen the same ticket in eighteen months.",
+        "stance": "asserted",
+        "claimed_by": "Priya",
+        "quote": "they have not had a regression reopen the same ticket in eighteen months",
+        "context": "Engineering blog, 2026-03-01"
+      }
+    },
+    {
+      "id": "gold_007",
+      "category": "clear_reinforcement",
+      "note": "Two independent observations of the same phenomenon by the same person, weeks apart.",
+      "expected": "reinforces",
+      "acceptable": [
+        "reinforces"
+      ],
+      "forbidden": [
+        "contradicts",
+        "qualifies"
+      ],
+      "a": {
+        "statement": "The onboarding docs were out of date in three separate places.",
+        "stance": "asserted",
+        "claimed_by": "Own notes",
+        "quote": "the onboarding docs were out of date in three separate places",
+        "context": "Own working notes, 2026-02-03"
+      },
+      "b": {
+        "statement": "The new hire spent her first two days chasing a setup step that no longer exists.",
+        "stance": "asserted",
+        "claimed_by": "Own notes",
+        "quote": "spent her first two days chasing a setup step that no longer exists",
+        "context": "Own working notes, 2026-03-11"
+      }
+    },
+    {
+      "id": "gold_008",
+      "category": "clear_reinforcement",
+      "note": "Advice given to others matching advice given earlier - reinforcement through consistency of practice, not restatement.",
+      "expected": "reinforces",
+      "acceptable": [
+        "reinforces",
+        "no_meaningful_relation"
+      ],
+      "forbidden": [
+        "contradicts"
+      ],
+      "a": {
+        "statement": "Read the code for six weeks before writing any of your own.",
+        "stance": "recommended",
+        "claimed_by": "Zilan",
+        "quote": "read the code for six weeks before writing any of your own",
+        "context": "Coffee, Brookside, 2026-03-20"
+      },
+      "b": {
+        "statement": "The same reading-first advice is what he gives the two juniors he mentors.",
+        "stance": "asserted",
+        "claimed_by": "Zilan",
+        "quote": "the same reading-first advice is what he gives them",
+        "context": "Coffee, Brookside, 2026-03-20"
+      }
+    },
+    {
+      "id": "gold_009",
+      "category": "clear_contradiction",
+      "note": "Same speaker, same context, incompatible statements about the same rule.",
+      "expected": "contradicts",
+      "acceptable": [
+        "contradicts"
+      ],
+      "forbidden": [
+        "reinforces",
+        "no_meaningful_relation"
+      ],
+      "a": {
+        "statement": "The team has a hard rule against deploying on Fridays.",
+        "stance": "asserted",
+        "claimed_by": "Priya",
+        "quote": "the team has a hard rule against deploying on Fridays",
+        "context": "Standup notes, 2026-03-04"
+      },
+      "b": {
+        "statement": "The team has no restrictions on when it deploys.",
+        "stance": "asserted",
+        "claimed_by": "Priya",
+        "quote": "the team has no restrictions on when it deploys",
+        "context": "Standup notes, 2026-03-04"
+      }
+    },
+    {
+      "id": "gold_010",
+      "category": "clear_contradiction",
+      "note": "An explicit retraction of the substance of an earlier claim, not a narrowing of it.",
+      "expected": "contradicts",
+      "acceptable": [
+        "contradicts",
+        "qualifies"
+      ],
+      "forbidden": [
+        "reinforces",
+        "no_meaningful_relation"
+      ],
+      "a": {
+        "statement": "He has never worked with Kubernetes.",
+        "stance": "asserted",
+        "claimed_by": "Daniel",
+        "quote": "he has never worked with Kubernetes",
+        "context": "Interview notes, 2026-01-15"
+      },
+      "b": {
+        "statement": "He ran the Kubernetes migration at his previous company for a year.",
+        "stance": "asserted",
+        "claimed_by": "Daniel",
+        "quote": "he ran the Kubernetes migration at his previous company for a year",
+        "context": "Interview notes, 2026-01-15"
+      }
+    },
+    {
+      "id": "gold_011",
+      "category": "clear_contradiction",
+      "note": "Directly opposed numbers about the same thing at the same time.",
+      "expected": "contradicts",
+      "acceptable": [
+        "contradicts"
+      ],
+      "forbidden": [
+        "reinforces"
+      ],
+      "a": {
+        "statement": "The pilot involved every one of the forty engineers.",
+        "stance": "asserted",
+        "claimed_by": "Programme update",
+        "quote": "the pilot involved every one of the forty engineers",
+        "context": "Programme update, 2026-02-28"
+      },
+      "b": {
+        "statement": "Only the four people on the platform team took part in the pilot.",
+        "stance": "asserted",
+        "claimed_by": "Programme update",
+        "quote": "only the four people on the platform team took part in the pilot",
+        "context": "Programme update, 2026-02-28"
+      }
+    },
+    {
+      "id": "gold_012",
+      "category": "false_contradiction_trap",
+      "note": "Different scopes. Two offices, opposite opening rules. 'Closed' beside 'open seven days' reads as a conflict and is not one.",
+      "expected": "no_meaningful_relation",
+      "acceptable": [
+        "no_meaningful_relation"
+      ],
+      "forbidden": [
+        "contradicts",
+        "reinforces",
+        "qualifies"
+      ],
+      "a": {
+        "statement": "The Kestrel Bay office is closed on Saturdays.",
+        "stance": "asserted",
+        "claimed_by": "Operations handbook",
+        "quote": "the Kestrel Bay office is closed on Saturdays",
+        "context": "Operations handbook, 2026-01-05"
+      },
+      "b": {
+        "statement": "The Singapore office is open seven days a week.",
+        "stance": "asserted",
+        "claimed_by": "Operations handbook",
+        "quote": "the Singapore office is open seven days a week",
+        "context": "Operations handbook, 2026-01-05"
+      }
+    },
+    {
+      "id": "gold_013",
+      "category": "false_contradiction_trap",
+      "note": "Different stages of the same project. 'Worse than baseline' beside 'beats the baseline' is a trajectory, not a conflict. CONTESTED DIRECTION: claude-sonnet-5 answered b_qualifies_a (the later result narrows the early failure) where this fixture says a_qualifies_b (the early failure narrows the later result). Both readings are defensible and the label was NOT changed to make the model pass - the disagreement is recorded here instead, and counts as a wrong_direction. What the pair is really testing is that neither model says `contradicts`.",
+      "expected": "qualifies",
+      "expected_direction": "a_qualifies_b",
+      "acceptable": [
+        "qualifies",
+        "no_meaningful_relation"
+      ],
+      "forbidden": [
+        "contradicts"
+      ],
+      "a": {
+        "statement": "In the first month the model was worse than the baseline.",
+        "stance": "asserted",
+        "claimed_by": "Nadia",
+        "quote": "in the first month the model was worse than the baseline",
+        "context": "Project log week 4, 2026-01-26"
+      },
+      "b": {
+        "statement": "The model now beats the baseline by a wide margin.",
+        "stance": "asserted",
+        "claimed_by": "Nadia",
+        "quote": "the model now beats the baseline by a wide margin",
+        "context": "Project log week 20, 2026-06-15"
+      }
+    },
+    {
+      "id": "gold_014",
+      "category": "false_contradiction_trap",
+      "note": "Different time periods and the person says so. Career change, not inconsistency.",
+      "expected": "no_meaningful_relation",
+      "acceptable": [
+        "no_meaningful_relation",
+        "qualifies"
+      ],
+      "forbidden": [
+        "contradicts"
+      ],
+      "a": {
+        "statement": "Back then he worked exclusively on backend systems.",
+        "stance": "asserted",
+        "claimed_by": "Marcus",
+        "quote": "back then he worked exclusively on backend systems",
+        "context": "Note about 2021, captured 2026-02-02"
+      },
+      "b": {
+        "statement": "These days he spends most of his time on frontend work.",
+        "stance": "asserted",
+        "claimed_by": "Marcus",
+        "quote": "these days he spends most of his time on frontend work",
+        "context": "Note, 2026-05-19"
+      }
+    },
+    {
+      "id": "gold_015",
+      "category": "false_contradiction_trap",
+      "note": "Different conditions. Both hold; the second is not a denial of the first, it names when the first applies.",
+      "expected": "qualifies",
+      "expected_direction": "b_qualifies_a",
+      "acceptable": [
+        "qualifies"
+      ],
+      "forbidden": [
+        "contradicts"
+      ],
+      "a": {
+        "statement": "The cache makes the endpoint respond almost instantly.",
+        "stance": "asserted",
+        "claimed_by": "Wren",
+        "quote": "the cache makes the endpoint respond almost instantly",
+        "context": "Performance note, 2026-03-08"
+      },
+      "b": {
+        "statement": "On a cold cache the same endpoint takes several seconds.",
+        "stance": "asserted",
+        "claimed_by": "Wren",
+        "quote": "on a cold cache the same endpoint takes several seconds",
+        "context": "Performance note, 2026-03-08"
+      }
+    },
+    {
+      "id": "gold_016",
+      "category": "false_contradiction_trap",
+      "note": "Different subjects entirely. Two people, two different rules, opposing shape.",
+      "expected": "no_meaningful_relation",
+      "acceptable": [
+        "no_meaningful_relation"
+      ],
+      "forbidden": [
+        "contradicts",
+        "reinforces",
+        "qualifies"
+      ],
+      "a": {
+        "statement": "She refuses to take meetings before eleven in the morning.",
+        "stance": "asserted",
+        "claimed_by": "Aisha",
+        "quote": "she refuses to take meetings before eleven in the morning",
+        "context": "Team note, 2026-02-14"
+      },
+      "b": {
+        "statement": "He schedules all his meetings first thing in the morning.",
+        "stance": "asserted",
+        "claimed_by": "Hafiz",
+        "quote": "he schedules all his meetings first thing in the morning",
+        "context": "Team note, 2026-02-14"
+      }
+    },
+    {
+      "id": "gold_017",
+      "category": "false_contradiction_trap",
+      "note": "Advice versus personal exception. The advice is not withdrawn by the speaker doing something else for a stated reason.",
+      "expected": "qualifies",
+      "expected_direction": "b_qualifies_a",
+      "acceptable": [
+        "qualifies",
+        "no_meaningful_relation"
+      ],
+      "forbidden": [
+        "contradicts"
+      ],
+      "a": {
+        "statement": "Beginners should not start with C.",
+        "stance": "recommended",
+        "claimed_by": "Chen",
+        "quote": "beginners should not start with C",
+        "context": "Mailing list, 2026-04-11"
+      },
+      "b": {
+        "statement": "He started with C himself because it was the only compiler on the machine he had.",
+        "stance": "asserted",
+        "claimed_by": "Chen",
+        "quote": "he started with C himself because it was the only compiler on the machine he had",
+        "context": "Mailing list, 2026-04-11"
+      }
+    },
+    {
+      "id": "gold_018",
+      "category": "attribution_trap",
+      "note": "Two different people making structurally identical claims about themselves. Independent alignment is legitimate reinforcement; collapsing them into one person's position is not. The collapse shows in the explanation and is judged by hand.",
+      "expected": "reinforces",
+      "acceptable": [
+        "reinforces",
+        "no_meaningful_relation"
+      ],
+      "forbidden": [
+        "contradicts",
+        "qualifies"
+      ],
+      "a": {
+        "statement": "He learned more from rebuilding a database than from any course.",
+        "stance": "asserted",
+        "claimed_by": "Zilan",
+        "quote": "he learned more from rebuilding a database than from any course",
+        "context": "Kestrel Python meetup, 2026-02-11"
+      },
+      "b": {
+        "statement": "She learned more from rebuilding a compiler than from any course.",
+        "stance": "asserted",
+        "claimed_by": "Aisha",
+        "quote": "she learned more from rebuilding a compiler than from any course",
+        "context": "Pinehaven tech night, 2026-05-03"
+      }
+    },
+    {
+      "id": "gold_019",
+      "category": "attribution_trap",
+      "note": "One person's advice and a different person's unrelated report. Nothing links them but the topic word.",
+      "expected": "no_meaningful_relation",
+      "acceptable": [
+        "no_meaningful_relation"
+      ],
+      "forbidden": [
+        "reinforces",
+        "qualifies",
+        "contradicts"
+      ],
+      "a": {
+        "statement": "Take the certification before applying to any of the cloud roles.",
+        "stance": "recommended",
+        "claimed_by": "Hafiz",
+        "quote": "take the certification before applying to any of the cloud roles",
+        "context": "Career chat, 2026-01-18"
+      },
+      "b": {
+        "statement": "Her company moved its billing service to the cloud last quarter.",
+        "stance": "asserted",
+        "claimed_by": "Priya",
+        "quote": "her company moved its billing service to the cloud last quarter",
+        "context": "Conference hallway, 2026-04-25"
+      }
+    },
+    {
+      "id": "gold_020",
+      "category": "trivial_similarity_trap",
+      "note": "Shares the word 'migration' and nothing else.",
+      "expected": "no_meaningful_relation",
+      "acceptable": [
+        "no_meaningful_relation"
+      ],
+      "forbidden": [
+        "reinforces",
+        "qualifies",
+        "contradicts"
+      ],
+      "a": {
+        "statement": "The database migration script runs in about four minutes.",
+        "stance": "asserted",
+        "claimed_by": "Own notes",
+        "quote": "the database migration script runs in about four minutes",
+        "context": "Own working notes, 2026-03-30"
+      },
+      "b": {
+        "statement": "The office migration to the new building is scheduled for April.",
+        "stance": "asserted",
+        "claimed_by": "Own notes",
+        "quote": "the office migration to the new building is scheduled for April",
+        "context": "Own working notes, 2026-03-30"
+      }
+    },
+    {
+      "id": "gold_021",
+      "category": "trivial_similarity_trap",
+      "note": "Both about Python, both true, neither bearing on the other. Topic is not relationship.",
+      "expected": "no_meaningful_relation",
+      "acceptable": [
+        "no_meaningful_relation"
+      ],
+      "forbidden": [
+        "reinforces",
+        "qualifies",
+        "contradicts"
+      ],
+      "a": {
+        "statement": "She uses Python for all of her data work.",
+        "stance": "asserted",
+        "claimed_by": "Nadia",
+        "quote": "she uses Python for all of her data work",
+        "context": "Team note, 2026-02-20"
+      },
+      "b": {
+        "statement": "She is learning Python's async model this year.",
+        "stance": "asserted",
+        "claimed_by": "Nadia",
+        "quote": "she is learning Python's async model this year",
+        "context": "Team note, 2026-02-20"
+      }
+    },
+    {
+      "id": "gold_022",
+      "category": "trivial_similarity_trap",
+      "note": "Heavy shared vocabulary, no relationship. One is about a person's habit, the other about a tool's release schedule.",
+      "expected": "no_meaningful_relation",
+      "acceptable": [
+        "no_meaningful_relation"
+      ],
+      "forbidden": [
+        "reinforces",
+        "qualifies",
+        "contradicts"
+      ],
+      "a": {
+        "statement": "He reviews every pull request the same day it is opened.",
+        "stance": "asserted",
+        "claimed_by": "Daniel",
+        "quote": "he reviews every pull request the same day it is opened",
+        "context": "Team note, 2026-01-27"
+      },
+      "b": {
+        "statement": "The pull request template was changed to require a testing section.",
+        "stance": "asserted",
+        "claimed_by": "Daniel",
+        "quote": "the pull request template was changed to require a testing section",
+        "context": "Team note, 2026-01-27"
+      }
+    },
+    {
+      "id": "gold_023",
+      "category": "trivial_similarity_trap",
+      "note": "Restatement, not reinforcement. The same fact in different words adds nothing, and calling it a relationship would put a worthless line in front of a reader.",
+      "expected": "no_meaningful_relation",
+      "acceptable": [
+        "no_meaningful_relation",
+        "reinforces"
+      ],
+      "forbidden": [
+        "contradicts",
+        "qualifies"
+      ],
+      "a": {
+        "statement": "The rewrite took three months.",
+        "stance": "asserted",
+        "claimed_by": "Wren",
+        "quote": "the rewrite took three months",
+        "context": "Project note, 2026-03-15"
+      },
+      "b": {
+        "statement": "It was about a quarter of a year before the rewrite was done.",
+        "stance": "asserted",
+        "claimed_by": "Wren",
+        "quote": "about a quarter of a year before the rewrite was done",
+        "context": "Project note, 2026-03-15"
+      }
+    },
+    {
+      "id": "gold_024",
+      "category": "no_relation",
+      "note": "Two unrelated facts about the same person.",
+      "expected": "no_meaningful_relation",
+      "acceptable": [
+        "no_meaningful_relation"
+      ],
+      "forbidden": [
+        "reinforces",
+        "qualifies",
+        "contradicts"
+      ],
+      "a": {
+        "statement": "Rust's borrow checker took him about a month to stop fighting.",
+        "stance": "asserted",
+        "claimed_by": "Wren",
+        "quote": "the borrow checker took him about a month to stop fighting",
+        "context": "Coffee, 2026-02-08"
+      },
+      "b": {
+        "statement": "The conference was moved to Pinehaven this year.",
+        "stance": "asserted",
+        "claimed_by": "Wren",
+        "quote": "the conference was moved to Pinehaven this year",
+        "context": "Coffee, 2026-02-08"
+      }
+    },
+    {
+      "id": "gold_025",
+      "category": "no_relation",
+      "note": "A technical preference and a logistics fact.",
+      "expected": "no_meaningful_relation",
+      "acceptable": [
+        "no_meaningful_relation"
+      ],
+      "forbidden": [
+        "reinforces",
+        "qualifies",
+        "contradicts"
+      ],
+      "a": {
+        "statement": "He prefers tabs to spaces and will not discuss it.",
+        "stance": "asserted",
+        "claimed_by": "Hafiz",
+        "quote": "he prefers tabs to spaces and will not discuss it",
+        "context": "Team note, 2026-04-01"
+      },
+      "b": {
+        "statement": "His visa renewal comes up in September.",
+        "stance": "asserted",
+        "claimed_by": "Hafiz",
+        "quote": "his visa renewal comes up in September",
+        "context": "Team note, 2026-04-01"
+      }
+    },
+    {
+      "id": "gold_026",
+      "category": "no_relation",
+      "note": "Two pieces of advice on unrelated subjects from the same person.",
+      "expected": "no_meaningful_relation",
+      "acceptable": [
+        "no_meaningful_relation"
+      ],
+      "forbidden": [
+        "reinforces",
+        "qualifies",
+        "contradicts"
+      ],
+      "a": {
+        "statement": "Write the runbook before the service goes live, not after.",
+        "stance": "recommended",
+        "claimed_by": "Priya",
+        "quote": "write the runbook before the service goes live, not after",
+        "context": "Ops talk, 2026-05-12"
+      },
+      "b": {
+        "statement": "Negotiate the salary band before the technical interview.",
+        "stance": "recommended",
+        "claimed_by": "Priya",
+        "quote": "negotiate the salary band before the technical interview",
+        "context": "Ops talk, 2026-05-12"
+      }
+    },
+    {
+      "id": "gold_027",
+      "category": "no_relation",
+      "note": "Same domain, no bearing. Both about databases; neither says anything about the other.",
+      "expected": "no_meaningful_relation",
+      "acceptable": [
+        "no_meaningful_relation"
+      ],
+      "forbidden": [
+        "reinforces",
+        "qualifies",
+        "contradicts"
+      ],
+      "a": {
+        "statement": "Their production database runs on a single machine.",
+        "stance": "asserted",
+        "claimed_by": "Chen",
+        "quote": "their production database runs on a single machine",
+        "context": "Meetup, 2026-03-22"
+      },
+      "b": {
+        "statement": "He first used a database at his university job.",
+        "stance": "asserted",
+        "claimed_by": "Chen",
+        "quote": "he first used a database at his university job",
+        "context": "Meetup, 2026-03-22"
+      }
+    },
+    {
+      "id": "gold_028",
+      "category": "no_relation",
+      "note": "A recommendation and an unrelated observation about tooling.",
+      "expected": "no_meaningful_relation",
+      "acceptable": [
+        "no_meaningful_relation"
+      ],
+      "forbidden": [
+        "reinforces",
+        "qualifies",
+        "contradicts"
+      ],
+      "a": {
+        "statement": "Apply to the fellowship even if the deadline looks tight.",
+        "stance": "recommended",
+        "claimed_by": "Aisha",
+        "quote": "apply to the fellowship even if the deadline looks tight",
+        "context": "Career chat, 2026-06-01"
+      },
+      "b": {
+        "statement": "Her editor crashes whenever she opens the generated protobuf files.",
+        "stance": "asserted",
+        "claimed_by": "Aisha",
+        "quote": "her editor crashes whenever she opens the generated protobuf files",
+        "context": "Career chat, 2026-06-01"
+      }
+    },
+    {
+      "id": "gold_029",
+      "category": "useful_non_obvious",
+      "note": "Seeing these two together changes how the first reads. Also a causal trap: the tempting explanation is 'the author leaving caused the knowledge loss', which neither statement says.",
+      "expected": "reinforces",
+      "acceptable": [
+        "reinforces",
+        "qualifies",
+        "no_meaningful_relation"
+      ],
+      "forbidden": [
+        "contradicts"
+      ],
+      "a": {
+        "statement": "Nobody currently on the team can explain why the retry logic exists.",
+        "stance": "asserted",
+        "claimed_by": "Own notes",
+        "quote": "nobody currently on the team can explain why the retry logic exists",
+        "context": "Own working notes, 2026-04-18"
+      },
+      "b": {
+        "statement": "The person who wrote the payments service left two years ago.",
+        "stance": "asserted",
+        "claimed_by": "Own notes",
+        "quote": "the person who wrote the payments service left two years ago",
+        "context": "Own working notes, 2026-05-02"
+      }
+    },
+    {
+      "id": "gold_030",
+      "category": "useful_non_obvious",
+      "note": "A stated policy and a stated practice that quietly narrows it. Worth surfacing precisely because neither note says it.",
+      "expected": "qualifies",
+      "expected_direction": "b_qualifies_a",
+      "acceptable": [
+        "qualifies",
+        "contradicts"
+      ],
+      "forbidden": [
+        "no_meaningful_relation"
+      ],
+      "a": {
+        "statement": "Every change goes through code review before it ships.",
+        "stance": "asserted",
+        "claimed_by": "Marcus",
+        "quote": "every change goes through code review before it ships",
+        "context": "Process overview, 2026-02-09"
+      },
+      "b": {
+        "statement": "Hotfixes are pushed straight to production and reviewed the next morning.",
+        "stance": "asserted",
+        "claimed_by": "Marcus",
+        "quote": "hotfixes are pushed straight to production and reviewed the next morning",
+        "context": "Incident write-up, 2026-04-27"
+      }
+    },
+    {
+      "id": "gold_031",
+      "category": "useless_relation",
+      "note": "REAL M4 OUTPUT, judged wrong on 2026-08-27 and rejected in the live database. claude-sonnet-5 called this `reinforces` and explained it as 'distinct but complementary aspects of his deliberate learning method: time allocation and project selection criteria'. That is technically defensible and worth nothing: two facts about one person's method do not bear on each other just because both describe the method. Invariant 15 - a technically correct but trivial relation is not useful intelligence. `reinforces` here scores as a false relation.",
+      "expected": "no_meaningful_relation",
+      "acceptable": [
+        "no_meaningful_relation"
+      ],
+      "forbidden": [
+        "contradicts",
+        "qualifies"
+      ],
+      "a": {
+        "statement": "The first six weeks were mostly reading, not writing.",
+        "stance": "asserted",
+        "claimed_by": "Zilan",
+        "quote": "said the first six weeks were mostly reading, not writing",
+        "context": "Coffee, Brookside, 2026-03-20"
+      },
+      "b": {
+        "statement": "He only picks things to rebuild that he has already used and been annoyed by.",
+        "stance": "asserted",
+        "claimed_by": "Zilan",
+        "quote": "he only picks things he has already used and been annoyed by",
+        "context": "Kestrel Python meetup, in person, 2026-02-11"
+      }
+    },
+    {
+      "id": "gold_032",
+      "category": "useless_relation",
+      "note": "The same shape as gold_031, constructed so the category is not a single example. Two habits of one person, both real, neither informing the other. A classifier eager to find structure will call these complementary parts of a working style.",
+      "expected": "no_meaningful_relation",
+      "acceptable": [
+        "no_meaningful_relation"
+      ],
+      "forbidden": [
+        "contradicts",
+        "qualifies"
+      ],
+      "a": {
+        "statement": "She reviews pull requests first thing in the morning.",
+        "stance": "asserted",
+        "claimed_by": "Nadia",
+        "quote": "she reviews pull requests first thing in the morning",
+        "context": "Team note, 2026-02-20"
+      },
+      "b": {
+        "statement": "She keeps her notes in a single plain text file.",
+        "stance": "asserted",
+        "claimed_by": "Nadia",
+        "quote": "she keeps her notes in a single plain text file",
+        "context": "Coffee, 2026-04-14"
+      }
+    },
+    {
+      "id": "gold_033",
+      "category": "attribution_trap",
+      "note": "Synthetic re-creation of a real M4 output (2026-08-29, classifier 1.1.0) on private evidence: names, places, ages, domain and wording are invented, and the logical structure the label depends on is preserved. Not re-run on this wording. The speaker is Ines but the proposition is about the LISTENER - 'I' is the note's author. 1.1.0 answered 'qualifies' on the original, reading the author's future losses as the speaker's own early losing phase. Nothing in the evidence says Ines ever lost a contest. Any meaningful label here requires assuming a speaker described themselves, which is why every one of them is forbidden.",
+      "expected": "no_meaningful_relation",
+      "acceptable": [
+        "no_meaningful_relation"
+      ],
+      "forbidden": [
+        "qualifies",
+        "contradicts",
+        "reinforces"
+      ],
+      "a": {
+        "statement": "She had entered many robotics contests, including contests in Lisbon and Toronto.",
+        "stance": "asserted",
+        "claimed_by": "Ines",
+        "quote": "Ines told me that she had entered many robotics contests, including contests in Lisbon and Toronto.",
+        "context": "Ines - contest experience and reinvestment, 2026-05-16"
+      },
+      "b": {
+        "statement": "I would lose most of my first few robotics contests.",
+        "stance": "asserted",
+        "claimed_by": "Ines",
+        "quote": "Ines told me that I would lose most of my first few robotics contests.",
+        "context": "Ines - advice about early contest losses, 2026-05-16"
+      },
+      "entity_label": "Ines"
+    },
+    {
+      "id": "gold_034",
+      "category": "attribution_trap",
+      "note": "Synthetic re-creation of a real M4 output (2026-08-29, classifier 1.1.0) on private evidence: names, places, ages, domain and wording are invented, and the logical structure the label depends on is preserved. Not re-run on this wording. The speaker is Ines but the proposition is about the LISTENER - 'I' is the note's author. 1.1.0 answered 'qualifies' on the original, reading the author's future losses as the speaker's own early losing phase. Nothing in the evidence says Ines ever lost a contest. Any meaningful label here requires assuming a speaker described themselves, which is why every one of them is forbidden. Same trap with an observation on the A side.",
+      "expected": "no_meaningful_relation",
+      "acceptable": [
+        "no_meaningful_relation"
+      ],
+      "forbidden": [
+        "qualifies",
+        "contradicts",
+        "reinforces"
+      ],
+      "a": {
+        "statement": "Met Ines, who had won robotics contests in Toronto.",
+        "stance": null,
+        "claimed_by": null,
+        "kind": "observation",
+        "subject": "Ines",
+        "quote": "I also met Ines, who had won robotics contests in Toronto.",
+        "context": "Lakeby Robotics Open - people observations, 2026-05-16"
+      },
+      "b": {
+        "statement": "I would lose most of my first few robotics contests.",
+        "stance": "asserted",
+        "claimed_by": "Ines",
+        "quote": "Ines told me that I would lose most of my first few robotics contests.",
+        "context": "Ines - advice about early contest losses, 2026-05-16"
+      },
+      "entity_label": "Ines"
+    },
+    {
+      "id": "gold_035",
+      "category": "attribution_trap",
+      "note": "Synthetic re-creation of a real M4 output (2026-08-29, classifier 1.1.0) on private evidence: names, places, ages, domain and wording are invented, and the logical structure the label depends on is preserved. Not re-run on this wording. The speaker is Ines but the proposition is about the LISTENER - 'I' is the note's author. 1.1.0 answered 'qualifies' on the original, reading the author's future losses as the speaker's own early losing phase. Nothing in the evidence says Ines ever lost a contest. Any meaningful label here requires assuming a speaker described themselves, which is why every one of them is forbidden. 1.1.0 invented a sequencing story: reinvestment followed a losing period.",
+      "expected": "no_meaningful_relation",
+      "acceptable": [
+        "no_meaningful_relation"
+      ],
+      "forbidden": [
+        "qualifies",
+        "contradicts",
+        "reinforces"
+      ],
+      "a": {
+        "statement": "She reinvested prize money she earned from robotics contests so that she could enter bigger competitions.",
+        "stance": "asserted",
+        "claimed_by": "Ines",
+        "quote": "She said that she reinvested prize money she earned from robotics contests so that she could enter bigger competitions.",
+        "context": "Ines - contest experience and reinvestment, 2026-05-16"
+      },
+      "b": {
+        "statement": "I would lose most of my first few robotics contests.",
+        "stance": "asserted",
+        "claimed_by": "Ines",
+        "quote": "Ines told me that I would lose most of my first few robotics contests.",
+        "context": "Ines - advice about early contest losses, 2026-05-16"
+      },
+      "entity_label": "Ines"
+    },
+    {
+      "id": "gold_036",
+      "category": "clear_reinforcement",
+      "note": "OVER-CORRECTION GUARD, WIDENED 2026-08-29 (wording corrected after independent review). Synthetic re-creation of a real M4 output (2026-08-29, classifier 1.1.0) on private evidence: names, places, ages, domain and wording are invented, and the logical structure the label depends on is preserved. Not re-run on this wording. Originally pinned as clear reinforcement on the ground that an independent observation corroborates what she said about herself. THE EVIDENCE ESTABLISHES NEITHER INDEPENDENCE NOR COMMON-SOURCE DERIVATION. Both records are the author's own and both are captured on the same day at the same event, but shared author and date establish proximity, not transmission: the debrief never says how the author learned she had won. Establishing independence would have needed something like 'I saw her win' or 'the published results list her'; establishing common-source derivation would have needed something like 'Ines told me she had won in Toronto'. Neither appears, so the provenance is UNKNOWN and no label may rest on it. On content the pair is genuinely strong - winning in Toronto ordinarily entails competing there and adds concrete achievement detail - though event identity is itself unestablished. So `reinforces` is defensible and `no_meaningful_relation` is defensible; the corpus must forbid neither. `contradicts` remains forbidden.",
+      "expected": "reinforces",
+      "acceptable": [
+        "reinforces",
+        "no_meaningful_relation"
+      ],
+      "forbidden": [
+        "contradicts"
+      ],
+      "a": {
+        "statement": "She had entered many robotics contests, including contests in Lisbon and Toronto.",
+        "stance": "asserted",
+        "claimed_by": "Ines",
+        "quote": "Ines told me that she had entered many robotics contests, including contests in Lisbon and Toronto.",
+        "context": "Ines - contest experience and reinvestment, 2026-05-16"
+      },
+      "b": {
+        "statement": "Met Ines, who had won robotics contests in Toronto.",
+        "stance": null,
+        "claimed_by": null,
+        "kind": "observation",
+        "subject": "Ines",
+        "quote": "I also met Ines, who had won robotics contests in Toronto.",
+        "context": "Lakeby Robotics Open - people observations, 2026-05-16"
+      },
+      "entity_label": "Ines"
+    },
+    {
+      "id": "gold_037",
+      "category": "trivial_similarity_trap",
+      "note": "CORRECTED 2026-08-29 after independent review; was pinned `reinforces`. Synthetic re-creation of a real M4 output (2026-08-29, classifier 1.1.0) on private evidence: names, places, ages, domain and wording are invented, and the logical structure the label depends on is preserved. Not re-run on this wording. THE PROVENANCE QUESTION IS NOT WHAT DECIDES THIS PAIR. As with gold_036, the evidence establishes neither that the debrief observation is independent of Ines's reported claims nor that it derives from the same conversation; shared author and date establish proximity, not transmission, and the debrief never says how the author learned she had won. That is UNKNOWN and stays UNKNOWN. This pair is `no_meaningful_relation` for a SEPARATE AND SUFFICIENT SEMANTIC REASON: winning a robotics contest in Toronto does not establish receipt of the prize money referenced in the reinvestment claim, and does not establish that the Toronto wins and the prize-money contests are the same events. Contests need not award cash, prizes may go to a team rather than an individual, and the money in the claim may have come from entirely different competitions. Labelling this `reinforces` therefore smuggles in an unstated bridge - win produced prize money, and that money is the money later reinvested - which is the top-priority error the classifier instructions rank worst. This holds EVEN IF the observation were proven independent, so no future provenance evidence rescues `reinforces` here. `contradicts` stays forbidden; `reinforces` is scored wrong deliberately. On the original private wording the 1.2.0 classifier predicted `reinforces`, so this entry is a FORWARD GUARD that was failing by design when it was written.",
+      "expected": "no_meaningful_relation",
+      "acceptable": [
+        "no_meaningful_relation"
+      ],
+      "forbidden": [
+        "contradicts"
+      ],
+      "a": {
+        "statement": "She reinvested prize money she earned from robotics contests so that she could enter bigger competitions.",
+        "stance": "asserted",
+        "claimed_by": "Ines",
+        "quote": "She said that she reinvested prize money she earned from robotics contests so that she could enter bigger competitions.",
+        "context": "Ines - contest experience and reinvestment, 2026-05-16"
+      },
+      "b": {
+        "statement": "Met Ines, who had won robotics contests in Toronto.",
+        "stance": null,
+        "claimed_by": null,
+        "kind": "observation",
+        "subject": "Ines",
+        "quote": "I also met Ines, who had won robotics contests in Toronto.",
+        "context": "Lakeby Robotics Open - people observations, 2026-05-16"
+      },
+      "entity_label": "Ines"
+    }
+  ]
+}
